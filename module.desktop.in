@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Link
+Name=Oconnection
+Icon=e-module-oconnection
+Comment=<title>Oconnection Module Gadget:</title>A NetworkManager client
+Comment[fr]=<title>Gadget Module Oconnection :</title><br>Un client pour NetworkManager.
+#Several different types available here. NEED TO DOC THESE.
+X-Enlightenment-ModuleType=system

@@ -1,0 +1,18 @@
+Source: e-module-oconnection
+Section: net
+Priority: extra
+Maintainer: Michael Bouchaud <yoz@efl.so>
+Build-Depends: debhelper (>= 9.20120608~bpo60+1), autotools-dev, e17-dev, libedje-dev, network-manager-dev
+Standards-Version: 3.9.4
+
+Package: e-module-oconnection
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, network-manager
+Description: E module oconnection - NetworkManager client
+ Graphical client for NetworkManager. Use dbus to control NetworkManager deamon
+
+Package: e-module-oconnection-dbg
+Architecture: any
+Section: libdevel
+Description: Debug package
+ This is the debug package of the oconnection's module on enlightenment

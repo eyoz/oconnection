@@ -1,0 +1,11 @@
+Files: *
+Copyright: 2017 Michael Bouchaud
+License: LGPL-2+
+
+Files: debian/*
+Copyright: 2017 Michael Bouchaud
+License: GPL-2+
+
+Files: images/*
+Copyright: 2017 Substantiel
+Licence: CC-BY-NC-SA

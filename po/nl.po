@@ -1,0 +1,192 @@
+# Dutch translation for enlightenment
+# This file is distributed under the same license as the enlightenment package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: enlightenment\n"
+"Report-Msgid-Bugs-To: enlightenment-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2017-02-16 10:21+0100\n"
+"PO-Revision-Date: 2013-06-14 15:00+0200\n"
+"Last-Translator: Corinne <>\n"
+"Language-Team: Dutch <nl@li.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.6\n"
+
+#: src/e_mod_config.c:44
+msgid "Oconnection Module"
+msgstr "Module Oconnection"
+
+#: src/e_mod_main.c:241 src/e_mod_main.c:489
+msgid "Oconnection"
+msgstr "Oconnection"
+
+#: src/e_mod_main.c:272
+msgid ""
+"Oconnection Module Configuration data needed upgrading. Your old "
+"configuration<br> has been wiped and a new set of defaults initialized. "
+"This<br>will happen regularly during development, so don't report a<br>bug. "
+"This simply means the module needs new configuration<br>data by default for "
+"usable functionality that your old<br>configuration simply lacks. This new "
+"set of defaults will fix<br>that by adding it in. You can re-configure "
+"things now to your<br>liking. Sorry for the inconvenience.<br>"
+msgstr ""
+"De configuratie van de Module Oconnection moest geüpdate worden. Uw oude "
+"configuratie<br>is gewist en is nu naar standaardwaarden teruggezet. Dit "
+"<br>zal regelmatig gebeuren tijdens de ontwikkelingsperiode en moet dus niet "
+"als een <br>bug gemeld worden. Dit betekent alleen dat de module standaard "
+"nieuwe configuratiedata nodig heeft<br>om bruikbare functionaliteiten te "
+"kunnen bieden, die de oude configuratie niet bezit. Deze nieuwe set van "
+"standaardwaarden<br>zal deze functies toevoegen. U kunt de configuratie nu "
+"naar wens wijzigen.<br>Sorry voor het ongemak.<br>"
+
+#: src/e_mod_main.c:292
+msgid ""
+"Your Oconnection Module configuration is NEWER than the module version. This "
+"is very<br>strange. This should not happen unless you downgraded<br>the "
+"module or copied the configuration from a place where<br>a newer version of "
+"the module was running. This is bad and<br>as a precaution your "
+"configuration has been now restored to<br>defaults. Sorry for the "
+"inconvenience.<br>"
+msgstr ""
+"Jouw Skelet Module Configuratie is NIEUWER dan de versie van de module. Dit "
+"is erg<br>raar. Dit zou niet mogen gebeuren tenzij je de module hebt "
+"gedowngrade<br>of een configuratiebestand gekopiëerd hebt van een plaats "
+"waar een nieuwere versie aanwezig was. Dit is erg en<br>uit voorzorg is jouw "
+"configuratiebestand hersteld naar<br>standaardwaarden. Sorry voor het "
+"ongemak.<br>"
+
+#: src/e_mod_main.c:572
+msgid "Oconnection Configuration Updated"
+msgstr "Configuratie Oconnection geüpdate"
+
+#: src/e_mod_main.c:1770
+#, c-format
+msgid "Network cable plugged with<br>IP %s"
+msgstr "Netwerkkabel aangesloten op<br>IP %s"
+
+#: src/e_mod_main.c:1774
+msgid "Network cable connected, no internet"
+msgstr "Netwerkkabel aangesloten, geen internetverbinding"
+
+#: src/e_mod_main.c:1778
+msgid "Your network cable is disconnected"
+msgstr "Uw netwerkkabel is niet aangesloten"
+
+#: src/e_mod_main.c:1803
+#, c-format
+msgid "Wi-Fi connected to network %s<br>with IP %s"
+msgstr "Wifi aangesloten op netwerk %s<br>met IP %s"
+
+#: src/e_mod_main.c:1807
+#, c-format
+msgid "Wi-Fi connected to network %s<br>without IP"
+msgstr "WiFi aangesloten op netwerk %s<br>zonder IP"
+
+#: src/e_mod_main.c:1812
+msgid "Wi-Fi enabled, no network connected"
+msgstr "WiFi ingeschakeld, geen netwerkverbinding"
+
+#: src/e_mod_main.c:1887
+msgid "<title>State of your network connection</title>"
+msgstr "<title>Status van de netwerkverbinding</title>"
+
+#: src/e_mod_main.c:1917
+msgid "<title>Wi-Fi network scanned</title>"
+msgstr "<title>WiFi netwerk beschikbaar</title>"
+
+#: src/e_mod_main.c:1935
+msgid "Hidden SSID - WPA"
+msgstr "SSID verborgen - WPA"
+
+#: src/e_mod_main.c:1938
+msgid "Hidden SSID - WEP"
+msgstr "SSID verborgen - WEP"
+
+#: src/e_mod_main.c:1941
+msgid "Hidden SSID - no security"
+msgstr "SSID verborgen - geen beveiliging"
+
+#: src/e_mod_main.c:1944
+msgid "More Results..."
+msgstr "Meer resultaten..."
+
+#: src/e_mod_main.c:1953 src/e_mod_main.c:1978
+#, c-format
+msgid "Connection to network %s"
+msgstr "Verbinding met netwerk %s"
+
+#: src/e_mod_main.c:1960
+msgid "Enter the network key"
+msgstr "Voer de netwerksleutel in"
+
+#: src/e_mod_main.c:1965 src/e_mod_main.c:1992 src/e_mod_main.c:2013
+#: src/e_mod_main.c:2022
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: src/e_mod_main.c:1968 src/e_mod_main.c:1995 src/e_mod_main.c:2025
+msgid "Connection"
+msgstr "Verbinding"
+
+#: src/e_mod_main.c:1986
+msgid "The password you have typed is incorrect</br>Please retype the password"
+msgstr ""
+"Het ingevoerde wachtwoord in onjuist</br>Voer het wachtwoord opnieuw in."
+
+#: src/e_mod_main.c:2003
+msgid "Connection to network"
+msgstr "Verbinding met netwerk"
+
+#: src/e_mod_main.c:2007
+msgid "Enter the name of your wireless network"
+msgstr "Voer de naam van het draadloze netwerk in"
+
+#: src/e_mod_main.c:2017
+msgid "Next"
+msgstr "Volgende"
+
+#: src/e_mod_main.c:2035
+msgid "Connection in progress..."
+msgstr "Bezig met verbinding..."
+
+#: src/e_mod_main.c:2044
+msgid "Associated, obtaining address..."
+msgstr "Gekoppeld, bezig met adres zoeken..."
+
+#: src/e_mod_main.c:2055
+msgid "Impossible to get an IP address"
+msgstr "Onmogelijk IP-adres te vinden"
+
+#: src/e_mod_main.c:2059
+msgid "Failed connection to the network: invalid key"
+msgstr "Aansluiting mislukt: ongeldige sleutel"
+
+#: src/e_mod_main.c:2065
+msgid "Connection suceeded !"
+msgstr "Aansluiting succesvol!"
+
+#~ msgid "Hidden SSID - WPA2"
+#~ msgstr "SSID verborgen - WPA2"
+
+#~ msgid "Wi-Fi disabled"
+#~ msgstr "WiFi uitgeschakeld"
+
+#~ msgid "Scan network Wi-Fi in progress"
+#~ msgstr "Bezig met netwerk WiFi zoeken"
+
+#~ msgid "General"
+#~ msgstr "Algemeen"
+
+#~ msgid "Use Switch 1"
+#~ msgstr "Gebruik Wissel 1"
+
+#~ msgid "Skeleton Module"
+#~ msgstr "Skelet Module"
+
+#~ msgid "Skeleton"
+#~ msgstr "Skelet"

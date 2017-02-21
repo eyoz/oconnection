@@ -1,0 +1,183 @@
+# German translation for enlightenment
+# This file is distributed under the same license as the enlightenment package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: enlightenment\n"
+"Report-Msgid-Bugs-To: enlightenment-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2017-02-16 10:21+0100\n"
+"PO-Revision-Date: 2013-06-14 11:23+0200\n"
+"Last-Translator: Jasper <jasper@substantiel.fr>\n"
+"Language-Team: German <de@li.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.6\n"
+"X-Launchpad-Export-Date: 2009-11-12 04:51+0000\n"
+
+#: src/e_mod_config.c:44
+msgid "Oconnection Module"
+msgstr "Modul Verbindungen"
+
+#: src/e_mod_main.c:241 src/e_mod_main.c:489
+msgid "Oconnection"
+msgstr "Verbindung"
+
+#: src/e_mod_main.c:272
+msgid ""
+"Oconnection Module Configuration data needed upgrading. Your old "
+"configuration<br> has been wiped and a new set of defaults initialized. "
+"This<br>will happen regularly during development, so don't report a<br>bug. "
+"This simply means the module needs new configuration<br>data by default for "
+"usable functionality that your old<br>configuration simply lacks. This new "
+"set of defaults will fix<br>that by adding it in. You can re-configure "
+"things now to your<br>liking. Sorry for the inconvenience.<br>"
+msgstr ""
+"Die Moduleinstellungen wurden aktualisiert. Ihre alte Konfiguration<br> "
+"wurde durch neue Standardwerte ersetzt. Dies<br>wird regelmäßig während des "
+"Entwicklungsprozesses passieren. Melden Sie dies nicht als<br>Fehler. Es "
+"bedeutet lediglich, dass das Benachrichtigungsmodul neue Standard-"
+"<br>einstellungen benötigt, die Ihre alte Einstellung nicht hatte,<br>um "
+"ordnungsgemäß zu funktionieren. Diese Standardeinstellungen "
+"wurden<br>hinzugefügt, um ordnungsgemäßes Funktionieren sicherzustellen. Sie "
+"können die<br>Einstellungen nun nach ihrem Belieben neu anpassen. Wir bitten "
+"um Ihr Verständnis.<br>"
+
+#: src/e_mod_main.c:292
+msgid ""
+"Your Oconnection Module configuration is NEWER than the module version. This "
+"is very<br>strange. This should not happen unless you downgraded<br>the "
+"module or copied the configuration from a place where<br>a newer version of "
+"the module was running. This is bad and<br>as a precaution your "
+"configuration has been now restored to<br>defaults. Sorry for the "
+"inconvenience.<br>"
+msgstr ""
+"Ihre Moduleinstellungen sind NEUER als die Modulversion selbst. Das ist "
+"sehr<br>seltsam und sollte nicht passieren, es sei denn, Sie haben das Modul "
+"<br>in eine ältere Version zurückgesetzt oder die Moduleinstellungen von "
+"einem Ort aus kopiert, an dem<br>eine neuere Version des Modules lief. Das "
+"ist kritisch.<br>Ihre Einstellungen wurden vorbeugend auf "
+"Standardwerte<br>zurückgesetzt.Wir bitten um Ihr Verständnis.<br>"
+
+#: src/e_mod_main.c:572
+msgid "Oconnection Configuration Updated"
+msgstr "Verbingungseinstellungen wurden aktualisiert"
+
+#: src/e_mod_main.c:1770
+#, c-format
+msgid "Network cable plugged with<br>IP %s"
+msgstr "Netzkabel mit dem<br>IP %s verbunden"
+
+#: src/e_mod_main.c:1774
+msgid "Network cable connected, no internet"
+msgstr "Netzkabel angeschlossen, keine Internet-Verbindung"
+
+#: src/e_mod_main.c:1778
+msgid "Your network cable is disconnected"
+msgstr "Ihr Netzkabel ist nicht angeschlossen"
+
+#: src/e_mod_main.c:1803
+#, c-format
+msgid "Wi-Fi connected to network %s<br>with IP %s"
+msgstr "W-LAN an das %s<br>Netz verbunden mit IP %s"
+
+#: src/e_mod_main.c:1807
+#, c-format
+msgid "Wi-Fi connected to network %s<br>without IP"
+msgstr "W-LAN ohne IP an das %s<br>Netz verbunden"
+
+#: src/e_mod_main.c:1812
+msgid "Wi-Fi enabled, no network connected"
+msgstr "W-LAN aktiviert, keine Verbindung"
+
+#: src/e_mod_main.c:1887
+msgid "<title>State of your network connection</title>"
+msgstr "<title>Stand der Netzanschlüsse</title>"
+
+#: src/e_mod_main.c:1917
+msgid "<title>Wi-Fi network scanned</title>"
+msgstr "<title>Verfügbare W-LAN Netzwerke</title>"
+
+#: src/e_mod_main.c:1935
+msgid "Hidden SSID - WPA"
+msgstr "SSID - WPA versteckt"
+
+#: src/e_mod_main.c:1938
+msgid "Hidden SSID - WEP"
+msgstr "SSID - WEP versteckt"
+
+#: src/e_mod_main.c:1941
+msgid "Hidden SSID - no security"
+msgstr "SSID versteckt - keine Sicherheit"
+
+#: src/e_mod_main.c:1944
+msgid "More Results..."
+msgstr "Mehr Ergebnisse..."
+
+#: src/e_mod_main.c:1953 src/e_mod_main.c:1978
+#, c-format
+msgid "Connection to network %s"
+msgstr "Anschluss ans Netzwerk %s"
+
+#: src/e_mod_main.c:1960
+msgid "Enter the network key"
+msgstr "Geben Sie den Netzschlüssel ein"
+
+#: src/e_mod_main.c:1965 src/e_mod_main.c:1992 src/e_mod_main.c:2013
+#: src/e_mod_main.c:2022
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: src/e_mod_main.c:1968 src/e_mod_main.c:1995 src/e_mod_main.c:2025
+msgid "Connection"
+msgstr "Anschluss"
+
+#: src/e_mod_main.c:1986
+msgid "The password you have typed is incorrect</br>Please retype the password"
+msgstr ""
+"Das eingegebene Passwort ist nicht korrekt. </br> Bitte geben Sie das "
+"Passwort erneut ein."
+
+#: src/e_mod_main.c:2003
+msgid "Connection to network"
+msgstr "Wird mit dem Netzwerk verbunden"
+
+#: src/e_mod_main.c:2007
+msgid "Enter the name of your wireless network"
+msgstr "Namen des W-LAN Netzes eingeben"
+
+#: src/e_mod_main.c:2017
+msgid "Next"
+msgstr "Nächste"
+
+#: src/e_mod_main.c:2035
+msgid "Connection in progress..."
+msgstr "Aufbau der Verbindung..."
+
+#: src/e_mod_main.c:2044
+msgid "Associated, obtaining address..."
+msgstr "Erhalten der Adresse findet statt..."
+
+#: src/e_mod_main.c:2055
+msgid "Impossible to get an IP address"
+msgstr "Unmöglich IP Adresse zu bekommen"
+
+#: src/e_mod_main.c:2059
+msgid "Failed connection to the network: invalid key"
+msgstr "Nicht verbunden: ungültiger Schlüssel"
+
+#: src/e_mod_main.c:2065
+msgid "Connection suceeded !"
+msgstr "Erfolgreich verbunden !"
+
+#~ msgid "Hidden SSID - WPA2"
+#~ msgstr "SSID - WPA2 versteckt"
+
+#~ msgid "Wi-Fi disabled"
+#~ msgstr "W-LAN deaktiviert"
+
+#~ msgid "Scan network Wi-Fi in progress"
+#~ msgstr "Nach W-LAN Netzwerken wird gesucht"

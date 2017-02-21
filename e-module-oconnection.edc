@@ -1,0 +1,546 @@
+images 
+{
+  image: "module_icon.png" COMP;
+}
+
+#define TRANSITION_PROGRAMS(NAME) \
+			 program\
+			 {\
+					name: "transition_"NAME ;\
+					signal: NAME"_make_transition" ;\
+					source: "";\
+          action: STATE_SET "up" 0.0;\
+					target: NAME"_icon";\
+					after: NAME"_move_to_visible";\
+					after: NAME"_move_others_to_default";\
+			 }\
+			 program\
+			 {\
+					name: NAME"_move_to_visible" ;\
+          action: STATE_SET "bounce_1" 0.0;\
+					transition: SINUSOIDAL 0.5;\
+					target: NAME"_icon";\
+					after: NAME"_move_to_visible_2";\
+			 }\
+			 program\
+			 {\
+					name: NAME"_move_to_visible_2" ;\
+          action: STATE_SET "bounce_2" 0.0;\
+					transition: SINUSOIDAL 0.05;\
+					target: NAME"_icon";\
+					after: NAME"_move_to_visible_3";\
+			 }\
+			 program\
+			 {\
+					name: NAME"_move_to_visible_3" ;\
+          action: STATE_SET "visible" 0.0;\
+					transition: SINUSOIDAL 0.05;\
+					target: NAME"_icon";\
+			 }
+
+styles
+{
+   style
+   {
+      name: "textblock_style";
+      base: "font=Arial font_size=14 color=#FFF align=left";
+      tag:  "br" "\n";
+      tag:  "b" "+ font=Arial:style=Bold text_class=tb_shadow";
+      tag: "title" "+ font=Arial:style=Bold text_class=tb_shadow font_size=16";
+      tag: "right" "+ font=Arial font_size=14 color=#FFF align=right";
+      tag: "center" "+ font=Arial font_size=18 color=#FFF align=center";
+   }
+}
+
+collections {
+   group { name: "icon";
+      max: 24 24;
+      parts {
+         part { name: "image";
+            mouse_events: 0;
+            type: IMAGE;
+            description { state: "default" 0.0;
+               image.normal: "module_icon.png";
+            }
+         }
+      }
+   }
+
+   group { name: "modules/oconnection/status_icon_swallow";
+      max: 24 24;
+      images
+      {
+         // these pictures should be used for the adequate part
+         // but they are not the final icons, so we put the wifi icon instead
+         // while waiting for the final ones.
+         //image: "network.png" COMP;
+         image: "noconnection.png" COMP;
+         image: "connection.png" COMP;
+         image: "connection-level1.png" COMP;
+         image: "connection-level2.png" COMP;
+         image: "connection-level3.png" COMP;
+         image: "connection-level4.png" COMP;
+         image: "connection-level5.png" COMP;
+      }
+      parts {
+         part { name: "base";
+            type: RECT;
+            mouse_events: 0;
+            description { state: "default" 0.0;
+               rel1.offset: 2 2;
+               rel2.offset: -3 -3;
+               color: 255 255 255 255;
+            }
+            description { state: "click" 0.0;
+               inherit: "default" 0.0;
+               rel1.offset: -2 -2;
+               rel2.offset: 3 3;
+            }
+         }
+         part { name: "wifi_icon";
+            clip_to: "base";
+            type: SWALLOW ;
+
+            description { state: "default" 0.0;
+               rel1.to: "base";
+               rel2.to: "base";
+               rel1.relative: 0.0 1.0 ;
+               rel2.relative: 1.0 2.0 ;
+               visible: 1;
+            }
+            description { state: "up" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 -1.0 ;
+               rel2.relative: 1.0 0.0 ;
+            }
+            description { state: "visible" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 0.0 ;
+               rel2.relative: 1.0 1.0 ;
+            }
+            description { state: "bounce_1" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 0.0 ;
+               rel1.offset: 0 3;
+               rel2.relative: 1.0 1.0 ;
+               rel2.offset: 0 2;
+            }
+            description { state: "bounce_2" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 0.0 ;
+               rel1.offset: 0 -1;
+               rel2.relative: 1.0 1.0 ;
+               rel2.offset: 0 -2;
+            }
+
+         }
+         part { name: "wired_icon";
+            clip_to: "base";
+            type: SWALLOW ;
+            description { state: "default" 0.0;
+               rel1.to: "base";
+               rel2.to: "base";
+               rel1.relative: 0.0 1.0 ;
+               rel2.relative: 1.0 2.0 ;
+            }
+            description { state: "up" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 -1.0 ;
+               rel2.relative: 1.0 0.0 ;
+            }
+            description { state: "visible" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 0.0 ;
+               rel2.relative: 1.0 1.0 ;
+            }
+            description { state: "bounce_1" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 0.0 ;
+               rel1.offset: 0 3;
+               rel2.relative: 1.0 1.0 ;
+               rel2.offset: 0 2;
+            }
+            description { state: "bounce_2" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 0.0 ;
+               rel1.offset: 0 -1;
+               rel2.relative: 1.0 1.0 ;
+               rel2.offset: 0 -2;
+            }
+         }
+         part { name: "no_connection_icon";
+            clip_to: "base";
+            type: SWALLOW ;
+            description { state: "default" 0.0;
+               rel1.to: "base";
+               rel2.to: "base";
+               rel1.relative: 0.0 1.0 ;
+               rel2.relative: 1.0 2.0 ;
+            }
+            description { state: "up" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 -1.0 ;
+               rel2.relative: 1.0 0.0 ;
+            }
+            description { state: "visible" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 0.0 ;
+               rel2.relative: 1.0 1.0 ;
+            }
+            description { state: "bounce_1" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 0.0 ;
+               rel1.offset: 0 3;
+               rel2.relative: 1.0 1.0 ;
+               rel2.offset: 0 2;
+            }
+            description { state: "bounce_2" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 0.0 0.0 ;
+               rel1.offset: 0 -1;
+               rel2.relative: 1.0 1.0 ;
+               rel2.offset: 0 -2;
+            }
+         }
+         part { name: "events";
+            type: RECT;
+            mouse_events: 1;
+            description { state: "default" 0.0;
+               color: 255 255 255 0 ;
+            }
+         }
+      }
+      programs {
+         program { name: "clicked";
+            signal: "mouse,down,1";
+            source: "event";
+            action: STATE_SET "click" 0.0;
+            transition: LINEAR 0.1;
+            target: "base";
+            after: "unclicked";
+         }
+         program { name: "unclicked";
+            action: STATE_SET "default" 0.0;
+            transition: LINEAR 0.2;
+            target: "base";
+         }
+
+         TRANSITION_PROGRAMS("wifi");
+         program
+         {
+            name: "wifi_move_others_to_default";
+            action: STATE_SET "default" 0.0;
+            transition: ACCELERATE 0.25;
+            target: "wired_icon" ;
+            target: "no_connection_icon" ;
+         }
+         TRANSITION_PROGRAMS("wired");
+         program
+         {
+            name: "wired_move_others_to_default";
+            action: STATE_SET "default" 0.0;
+            transition: ACCELERATE 0.25;
+            target: "wifi_icon" ;
+            target: "no_connection_icon" ;
+         }
+         TRANSITION_PROGRAMS("no_connection");
+         program
+         {
+            name: "no_connection_move_others_to_default";
+            action: STATE_SET "default" 0.0;
+            transition: ACCELERATE 0.25;
+            target: "wifi_icon" ;
+            target: "wired_icon" ;
+         }
+      }
+   }
+
+   group
+   {
+      name: "modules/oconnection/wired";
+      images
+      {
+         //image: "network.png" COMP;
+         image: "connection.png" COMP;
+      }
+      parts {
+         part { name: "base";
+            mouse_events: 0;
+            type: IMAGE;
+            description { state: "default" 0.0;
+               //image.normal: "network.png";
+               image.normal: "connection.png";
+               visible: 1;
+            }
+         }
+      }
+   }
+
+   group { name: "modules/oconnection/no_connection";
+      images
+      {
+         image: "noconnection.png" COMP;
+         image: "connection.png" COMP;
+      }
+      parts {
+         part { name: "base";
+            mouse_events: 0;
+            type: IMAGE;
+            description { state: "default" 0.0;
+               image.normal: "noconnection.png";
+               //image.normal: "connection.png";
+               visible: 1;
+            }
+         }
+      }
+   }
+
+  group { name: "modules/oconnection/wifi";
+     images
+     {
+        image: "connection.png" COMP;
+        image: "connection-level1.png" COMP;
+        image: "connection-level2.png" COMP;
+        image: "connection-level3.png" COMP;
+        image: "connection-level4.png" COMP;
+        image: "connection-level5.png" COMP;
+     }
+     parts {
+        part { name: "base";
+          mouse_events: 0;
+          type: IMAGE;
+          description { state: "default" 0.0;
+             image.normal: "connection.png";
+          }
+          description { state: "level1" 0.0;
+             inherit: "default" 0.0;
+             image.normal: "connection-level1.png";
+          }
+          description { state: "level2" 0.0;
+             inherit: "default" 0.0;
+             image.normal: "connection-level2.png";
+          }
+          description { state: "level3" 0.0;
+             inherit: "default" 0.0;
+             image.normal: "connection-level3.png";
+          }
+          description { state: "level4" 0.0;
+             inherit: "default" 0.0;
+             image.normal: "connection-level4.png";
+          }
+          description { state: "level5" 0.0;
+             inherit: "default" 0.0;
+             image.normal: "connection-level5.png";
+          }
+        }
+     }
+
+     programs {
+        program { name: "level0";
+           action: STATE_SET "default" 0.0;
+           target: "base" ;
+           signal: "wifi.level0";
+           source: "";
+        }
+        program { name: "level1";
+           action: STATE_SET "level1" 0.0;
+           target: "base" ;
+           signal: "wifi.level1";
+           source: "";
+        }
+        program { name: "level2";
+           action: STATE_SET "level2" 0.0;
+           target: "base" ;
+           signal: "wifi.level2";
+           source: "";
+        }
+        program { name: "level3";
+           action: STATE_SET "level3" 0.0;
+           target: "base" ;
+           signal: "wifi.level3";
+           source: "";
+        }
+        program { name: "level4";
+           action: STATE_SET "level4" 0.0;
+           target: "base" ;
+           signal: "wifi.level4";
+           source: "";
+        }
+        program { name: "level5";
+           action: STATE_SET "level5" 0.0;
+           target: "base" ;
+           signal: "wifi.level5";
+           source: "";
+        }
+     }
+  }
+
+  group { name: "modules/oconnection/unclickable_item";
+     parts {
+        part { name: "base" ;
+           mouse_events: 0;
+           type: RECT;
+           description
+           {
+              state: "default" 0.0;
+              visible: 0;
+           }
+        }
+        part { name: "label" ;
+           mouse_events: 0;
+           type: TEXTBLOCK;
+           scale: 1;
+           description { state: "default" 0.0;
+              rel1.to: "base";
+              rel1.offset: 10 5;
+              rel2.to: "base";
+              rel2.offset: -11 -6;
+              text
+              {
+                 style: "textblock_style" ;
+                 min: 1 1 ;
+              }
+           }
+        }
+     }
+  }
+
+  group { name: "modules/oconnection/label";
+     parts {
+        part { name: "base" ;
+           mouse_events: 0;
+           type: RECT;
+           description
+           {
+              state: "default" 0.0;
+              visible: 0;
+           }
+        }
+        part { name: "label" ;
+           mouse_events: 0;
+           type: TEXTBLOCK;
+           scale: 1;
+           description { state: "default" 0.0;
+              rel1.to: "base";
+              rel2.to: "base";
+              text
+              {
+                 style: "textblock_style";
+                 min: 1 1;
+              }
+           }
+        }
+     }
+  }
+
+  group { name: "modules/oconnection/item";
+    parts {
+       part { name: "base";
+          mouse_events: 0;
+          type: RECT;
+          description { state: "default" 0.0;
+             visible: 0;
+          }
+       }
+
+       part { name: "e.swallow.content";
+          type: SWALLOW;
+          description { state: "default" 0.0;
+             rel1.to: "base";
+             rel1.offset: 5 5;
+             rel2.to: "base";
+             rel2.offset: -6 -6;
+          }
+       }
+       part { name: "events" ;
+          type: RECT;
+          mouse_events: 1;
+          description { state: "default" 0.0;
+             color: 255 255 255 0 ;
+          }
+       }
+    }
+  }
+  group { name: "modules/oconnection/item/tablette";
+    parts {
+       part { name: "base";
+          mouse_events: 0;
+          type: RECT;
+          description { state: "default" 0.0;
+             visible: 0;
+          }
+       }
+
+       part { name: "e.swallow.content";
+          type: SWALLOW;
+          description { state: "default" 0.0;
+             rel1.to: "base";
+             rel1.offset: 5 8;
+             rel2.to: "base";
+             rel2.offset: -6 -9;
+          }
+       }
+       part { name: "events" ;
+          type: RECT;
+          mouse_events: 1;
+          description { state: "default" 0.0;
+             color: 255 255 255 0;
+          }
+       }
+    }
+  }
+
+  group { name: "modules/oconnection/item/space";
+    min: 16 3;
+    max: 99999 3;
+    parts {
+       part { name: "base";
+          mouse_events: 0;
+          description { state: "default" 0.0;
+            min: 16 5;
+            visible: 0;
+          }
+       }
+       part { name: "space";
+          type: RECT;
+          mouse_events: 0;
+          description { state: "default" 0.0;
+             min: 16 1;
+             visible: 1;
+             rel1.relative: 0.15 0.5;
+             rel2.relative: 0.85 0.5;
+             rel2.offset: -1 0;
+             color: 255 255 255 255;
+          }
+       }
+    }
+  }
+
+  group { name: "modules/oconnection/padlock";
+     images
+     {
+        image: "padlock.png" COMP;
+     }
+     parts {
+        part { name: "base";
+           mouse_events: 0;
+           type: RECT;
+           description
+           {
+              state: "default" 0.0 ;
+              visible: 0;
+           }
+        }
+        part { name: "image";
+           type: IMAGE;
+           description { state: "default" 0.0;
+              visible: 1;
+              image.normal: "padlock.png";
+              rel1.to: "base";
+              rel2.to: "base";
+              min: 13 13;
+           }
+        }
+     }
+  }
+}

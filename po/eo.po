@@ -1,0 +1,187 @@
+# Esperanto translations for skel package.
+# Copyright (C) 2009 Enlightenment development team
+# This file is distributed under the same license as the skel package.
+#
+# Olivier <eliovir@nospam.gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: skel 0.0.1\n"
+"Report-Msgid-Bugs-To: enlightenment-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2017-02-16 10:21+0100\n"
+"PO-Revision-Date: 2009-05-10 23:57+0000\n"
+"Last-Translator: Olivier <eliovir@nospam.gmail.com>\n"
+"Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 0.3\n"
+
+#: src/e_mod_config.c:44
+msgid "Oconnection Module"
+msgstr ""
+
+#: src/e_mod_main.c:241 src/e_mod_main.c:489
+msgid "Oconnection"
+msgstr ""
+
+#: src/e_mod_main.c:272
+#, fuzzy
+msgid ""
+"Oconnection Module Configuration data needed upgrading. Your old "
+"configuration<br> has been wiped and a new set of defaults initialized. "
+"This<br>will happen regularly during development, so don't report a<br>bug. "
+"This simply means the module needs new configuration<br>data by default for "
+"usable functionality that your old<br>configuration simply lacks. This new "
+"set of defaults will fix<br>that by adding it in. You can re-configure "
+"things now to your<br>liking. Sorry for the inconvenience.<br>"
+msgstr ""
+"La agordo de la modulo Skeleto bezonas ĝisdatigon. Via malnova agordo<br> "
+"estis viŝita kaj nova aro da defaŭltoj estis pravalorizitaj. Tio okazos ofte "
+"dum<br> la programado, do ne raportu cimon. Tio simple signifas ke la "
+"modulo<br> Skeleto bezonas novajn datumojn de agordo defaŭlte por uzebla "
+"funkcieco<br> kiuj viaj agordoj mankas. Tiu nova aro da defaŭltoj korektos "
+"tion aldoniĝante<br> Vi povas de nove agordi nun kiel vi volas. Bonvolu "
+"pardoni por la malagrablaĵoj.<br>"
+
+#: src/e_mod_main.c:292
+#, fuzzy
+msgid ""
+"Your Oconnection Module configuration is NEWER than the module version. This "
+"is very<br>strange. This should not happen unless you downgraded<br>the "
+"module or copied the configuration from a place where<br>a newer version of "
+"the module was running. This is bad and<br>as a precaution your "
+"configuration has been now restored to<br>defaults. Sorry for the "
+"inconvenience.<br>"
+msgstr ""
+"Via agordo de la modulo Skeleto estas PLI NOVA ol la modulo Skeleto. Tio "
+"estas<br> strangega. Tio ne devus okazi almenaŭ vi "
+"malĝisdatigis<br>Enlightenement aŭ kopiis la agordon el ejo kie pli "
+"nova<br>versio de la Modulo Skeleto estis funciinta. Tio estas malbona "
+"kaj<br>kiel antaŭzorgo via agordo estis restaŭrita per defaŭltaĵoj."
+"<br>Bonvolu pardoni por la ĝeno.<br>"
+
+#: src/e_mod_main.c:572
+#, fuzzy
+msgid "Oconnection Configuration Updated"
+msgstr "Agordo de Skeleto ĝisdatigita"
+
+#: src/e_mod_main.c:1770
+#, c-format
+msgid "Network cable plugged with<br>IP %s"
+msgstr ""
+
+#: src/e_mod_main.c:1774
+msgid "Network cable connected, no internet"
+msgstr ""
+
+#: src/e_mod_main.c:1778
+msgid "Your network cable is disconnected"
+msgstr ""
+
+#: src/e_mod_main.c:1803
+#, c-format
+msgid "Wi-Fi connected to network %s<br>with IP %s"
+msgstr ""
+
+#: src/e_mod_main.c:1807
+#, c-format
+msgid "Wi-Fi connected to network %s<br>without IP"
+msgstr ""
+
+#: src/e_mod_main.c:1812
+msgid "Wi-Fi enabled, no network connected"
+msgstr ""
+
+#: src/e_mod_main.c:1887
+msgid "<title>State of your network connection</title>"
+msgstr ""
+
+#: src/e_mod_main.c:1917
+msgid "<title>Wi-Fi network scanned</title>"
+msgstr ""
+
+#: src/e_mod_main.c:1935
+msgid "Hidden SSID - WPA"
+msgstr ""
+
+#: src/e_mod_main.c:1938
+msgid "Hidden SSID - WEP"
+msgstr ""
+
+#: src/e_mod_main.c:1941
+msgid "Hidden SSID - no security"
+msgstr ""
+
+#: src/e_mod_main.c:1944
+msgid "More Results..."
+msgstr ""
+
+#: src/e_mod_main.c:1953 src/e_mod_main.c:1978
+#, c-format
+msgid "Connection to network %s"
+msgstr ""
+
+#: src/e_mod_main.c:1960
+msgid "Enter the network key"
+msgstr ""
+
+#: src/e_mod_main.c:1965 src/e_mod_main.c:1992 src/e_mod_main.c:2013
+#: src/e_mod_main.c:2022
+msgid "Cancel"
+msgstr ""
+
+#: src/e_mod_main.c:1968 src/e_mod_main.c:1995 src/e_mod_main.c:2025
+#, fuzzy
+msgid "Connection"
+msgstr "Agordo"
+
+#: src/e_mod_main.c:1986
+msgid "The password you have typed is incorrect</br>Please retype the password"
+msgstr ""
+
+#: src/e_mod_main.c:2003
+#, fuzzy
+msgid "Connection to network"
+msgstr "Agordo"
+
+#: src/e_mod_main.c:2007
+msgid "Enter the name of your wireless network"
+msgstr ""
+
+#: src/e_mod_main.c:2017
+msgid "Next"
+msgstr ""
+
+#: src/e_mod_main.c:2035
+msgid "Connection in progress..."
+msgstr ""
+
+#: src/e_mod_main.c:2044
+msgid "Associated, obtaining address..."
+msgstr ""
+
+#: src/e_mod_main.c:2055
+msgid "Impossible to get an IP address"
+msgstr ""
+
+#: src/e_mod_main.c:2059
+msgid "Failed connection to the network: invalid key"
+msgstr ""
+
+#: src/e_mod_main.c:2065
+msgid "Connection suceeded !"
+msgstr ""
+
+#~ msgid "General"
+#~ msgstr "Ĝenerala"
+
+#~ msgid "Use Switch 1"
+#~ msgstr "Uzi ŝalton 1"
+
+#~ msgid "Skeleton Module"
+#~ msgstr "Skeleto modulo"
+
+#~ msgid "Skeleton"
+#~ msgstr "Skeleto"

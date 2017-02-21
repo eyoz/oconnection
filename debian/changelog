@@ -1,0 +1,6 @@
+e-module-oconnection (0.0.1) unstable; urgency=low
+
+  * network-manager support
+
+ -- Michael Bouchaud <yoz@efl.so>  Tue, 21 Feb 2017 12:07:04 +0100
+
