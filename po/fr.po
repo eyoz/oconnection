@@ -3,8 +3,8 @@
 # batden <batden@orange.fr>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: Skeleton module\n"
-"Report-Msgid-Bugs-To: enlightenment-devel@lists.sourceforge.net\n"
+"Project-Id-Version: oconnection\n"
+"Report-Msgid-Bugs-To: yoz@efl.so\n"
 "POT-Creation-Date: 2017-02-16 10:21+0100\n"
 "PO-Revision-Date: 2013-06-13 17:52+0200\n"
 "Last-Translator: Brice <brice@substantiel.fr>\n"

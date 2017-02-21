@@ -4,8 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: enlightenment\n"
-"Report-Msgid-Bugs-To: enlightenment-devel@lists.sourceforge.net\n"
+"Project-Id-Version: oconnection\n"
+"Report-Msgid-Bugs-To: yoz@efl.so\n"
 "POT-Creation-Date: 2017-02-16 10:21+0100\n"
 "PO-Revision-Date: 2009-06-09 18:14+0000\n"
 "Last-Translator: milboy <Unknown>\n"
