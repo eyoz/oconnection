@@ -567,7 +567,8 @@ _oconnection_conf_free(void)
 Eina_Bool
 _oconnection_conf_timer(void *data)
 {
-   e_util_dialog_show( D_("Oconnection Configuration Updated"), data);
+   e_util_dialog_show(D_("Oconnection Configuration need to be updated %s"),
+                      data);
    return 0;
 }
 
@@ -1897,8 +1898,6 @@ _oconnection_popup_populate_info_scan(Instance *inst, int max)
    Eina_List *list = NULL, *l = NULL;
    Oconnection_Item *oi;
    char buf[PATH_MAX];
-   int signal;
-   int count;
 
    evas = inst->popup->win->evas;
    if (inst->ui.oconnection_items)
@@ -2150,7 +2149,6 @@ _e_mod_main_popup_scan_results_update(Instance *inst, Eina_List *networks)
    OWireless_Network *ow;
    Oconnection_Item *oi;
    Eina_List *l, *ll;
-   int signal;
    char buf[PATH_MAX];
 
    if (!inst->popup) return;

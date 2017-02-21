@@ -79,7 +79,6 @@ static void _oconnection_nm_device_iterate(void *data, const Eldbus_Message *msg
 static void _oconnection_nm_device_update_property(void *data, const void *msg, Eldbus_Message_Iter *it);
 static void _oconnection_nm_ip4_iterate(void *data, const Eldbus_Message *msg, Eldbus_Pending *pend);
 static void _oconnection_nm_device_ip4_update_property(void *data, const void *msg, Eldbus_Message_Iter *it);
-static void _oconnection_nm_connected_update(void *data, const Eldbus_Message *msg, Eldbus_Pending *pend);
 static void _oconnection_nm_wifi_connection_iterate(void *data, const Eldbus_Message *msg, Eldbus_Pending *pend);
 static void _oconnection_nm_wifi_connection_update_property(void *data, const void *msg, Eldbus_Message_Iter *it);
 static void _oconnection_nm_wifi_access_point_iterate(void *data, const Eldbus_Message *msg, Eldbus_Pending *pend);
@@ -171,7 +170,6 @@ oconnection_nm_init(void)
 void
 oconnection_nm_shutdown(void)
 {
-   const char *ssid;
    Eldbus_Signal_Handler *h;
 
    if (_scan_timer) ecore_timer_del(_scan_timer);
@@ -187,7 +185,6 @@ oconnection_nm_scan(void)
 {
    OIface_Status *os;
    Eina_List *l;
-   DBusMessage *msg;
 
    EINA_LIST_FOREACH(oconnection_iface_wifi_get(), l, os)
      {
@@ -298,7 +295,7 @@ oconnection_nm_connect(OWireless_Network *ow, const char *psk)
              eldbus_message_iter_container_close(param, var);
              eldbus_message_iter_container_close(group, param);
 
-             /* connection / autoconnect */
+             /* connection / autoconnect / priority */
              ODBG("Create new settings priority\n");
              key = "autoconnect-priority";
              if (psk)
@@ -471,9 +468,6 @@ oconnection_nm_is_in_spool_get(const char *key)
 static void
 _oconnection_nm_devices_get(void)
 {
-   Eldbus_Object *obj;
-   Eldbus_Proxy *proxy;
-
    ODBG("request devices list\n");
    OCONNECTION_CALL(NM_DBUS_SERVICE, NM_DBUS_PATH, NM_DBUS_INTERFACE,
                     "GetDevices",
@@ -486,7 +480,6 @@ static void
 _oconnection_nm_devices_get_cb(void *data, const Eldbus_Message *msg, Eldbus_Pending *pend)
 {
    char *iface;
-   int num_devices;
    Eldbus_Message_Iter *it;
 
    OCONNECTION_CHECK(msg);
@@ -548,10 +541,6 @@ static void
 _oconnection_nm_device_iterate(void *data, const Eldbus_Message *msg, Eldbus_Pending *pend)
 {
    OIface_Status *os;
-   char *key;
-   int value;
-   Eina_List *l;
-   OWireless_Network *ow;
    Eldbus_Message_Iter *array;
    OCONNECTION_CHECK(msg);
 
@@ -660,8 +649,6 @@ _oconnection_nm_device_update_property(void *data, const void *msg, Eldbus_Messa
    else if (!strcmp(key, "Ip4Config"))
      {
         char *value;
-        Eldbus_Object *obj;
-        Eldbus_Proxy *proxy;
 
         if (!eldbus_message_iter_arguments_get(it, "o", &value)) return;
         if ((os->connected) && (strcmp(value, "/")))
@@ -914,7 +901,6 @@ static void
 _oconnection_nm_setting_update_property(void *data, const void *msg, Eldbus_Message_Iter *it)
 {
    const char *key = msg;
-   Eldbus_Message_Iter *array;
 
    ODBG_PROP("Update setting %s property %s\n", data, key);
 
@@ -932,17 +918,14 @@ _oconnection_nm_setting_wifi_update_property(void *data, const void *msg, Eldbus
 {
    const char *key = msg;
    ODBG_PROP("Update setting property %s\n", key);
-   Eldbus_Message_Iter *array;
-   OWireless_Network *ow;
-   Eina_List *l;
-   const char *ssid = NULL;
+   const char *ssid;
 
    if (!strcmp(key, "ssid"))
      {
         _oconnection_nm_util_ssid_get(it, &ssid);
         if (!eina_hash_find(_spool, ssid))
           {
-             ODBG("Add %s setting for ssid %s to spool\n", data, ssid);
+             ODBG("Add %s setting for ssid %s to spool\n", (char *)data, ssid);
              eina_hash_add(_spool, ssid, data);
           }
         else
@@ -955,7 +938,6 @@ _oconnection_nm_setting_wifi_update_property(void *data, const void *msg, Eldbus
 static void
 _oconnection_nm_scan_cb(void *data, const Eldbus_Message *msg, Eldbus_Pending *pend)
 {
-   const char *errname, *errmsg;
    char *ssid_path;
    OWireless_Network *ow;
    Eina_List *l;
@@ -1117,8 +1099,6 @@ _oconnection_nm_activate_connection(OWireless_Network *ow, const char *conf_path
 {
    Eina_List *l;
    OIface_Status *os;
-   DBusMessage *msg;
-   DBusMessageIter it;
 
    eina_stringshare_replace(&_current_conf_path, conf_path);
    EINA_LIST_FOREACH(oconnection_iface_wifi_get(), l, os)
@@ -1254,7 +1234,7 @@ _oconnection_nm_setting_remove_from_spool(EINA_UNUSED const Eina_Hash *hash, con
 {
    if (!strcmp(fdata, data))
      {
-        ODBG("Setting %s remove from spool\n", key);
+        ODBG("Setting %s remove from spool\n", (char *)key);
         eina_hash_del(_spool, key, NULL);
         return EINA_FALSE;
      }
@@ -1353,7 +1333,7 @@ _oconnection_nm_setting_save_cb(void *data, const Eldbus_Message *msg, Eldbus_Pe
    Eldbus_Message_Iter *it;
 
    OCONNECTION_CHECK(msg);
-   ODBG("Setting update %s\n", data);
+   ODBG("Setting update %s\n", (char *)data);
    obj = eldbus_object_get(_nm_dbus, NM_DBUS_SERVICE, data);
    proxy = eldbus_proxy_get(obj, NM_DBUS_IFACE_SETTINGS_CONNECTION);
    new_msg = eldbus_proxy_method_call_new(proxy, "Update");
@@ -1383,7 +1363,6 @@ static void
 _oconnection_recursive_iter_copy(Eldbus_Message_Iter *from, Eldbus_Message_Iter *to)
 {
    char *sig;
-   char *type = NULL;
    char *to_sig;
 
    if (!from || !to) return;
@@ -1434,13 +1413,11 @@ _oconnection_recursive_iter_copy(Eldbus_Message_Iter *from, Eldbus_Message_Iter 
           {
              /* recursively copy container type entries */
              Eldbus_Message_Iter *to_it, *from_it;
-             Eina_Bool next = EINA_FALSE;
              if ((*sig == '{')
                  || (*sig == '(')
                  || (*sig == 'a'))
                {
                   char signature;
-                  char *key;
 
                   if (*sig == '{') signature = 'e';
                   else if (*sig == '(') signature = 'r';
