@@ -2088,12 +2088,19 @@ _oconnection_popup_position(Instance *inst, Evas_Coord ww, Evas_Coord hh)
    zh = inst->popup->win->zone->h;
    nx = gx - (gw / 2);
    ny = gy - hh;
-   if ((nx + ww) >= (zx + zw - OAPPRENDRE_MIN_SPACE))
-     nx = (zx + zw - OAPPRENDRE_MIN_SPACE) - inst->popup->w;
+   if ((nx + ww) >= (zx + zw))
+     nx = (zx + zw) - inst->popup->w;
+   else if (nx < zx)
+     nx = zx;
+   if ((ny + hh) >= (zy + zh))
+     ny = (zy + zh) - inst->popup->h;
+   else if (ny < zy)
+     ny = zy;
 
    ratio = gx + (gw / 2.0) - nx;
    ratio = ratio / ww;
 
+   fprintf(stderr, "Move resize %d %d %d %d orient %d\n", nx, ny, ww, hh, inst->popup->gcc->gadcon->orient);
    e_popup_move_resize(inst->popup->win, nx, ny, ww, hh);
 }
 
