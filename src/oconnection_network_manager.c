@@ -308,6 +308,17 @@ oconnection_nm_connect(OWireless_Network *ow, const char *psk)
              eldbus_message_iter_basic_append(var, 'u', t);
              eldbus_message_iter_container_close(param, var);
              eldbus_message_iter_container_close(group, param);
+
+             /* connection / autoconnect / retries */
+             ODBG("Create new settings retries\n");
+             key = "autoconnect-retries";
+             t = -1; /* Default value (4 retries) */
+             eldbus_message_iter_arguments_append(group, "{sv}", &param);
+             eldbus_message_iter_basic_append(param, 's', key);
+             var = eldbus_message_iter_container_new(param, 'v', "u");
+             eldbus_message_iter_basic_append(var, 'u', t);
+             eldbus_message_iter_container_close(param, var);
+             eldbus_message_iter_container_close(group, param);
           }
         eldbus_message_iter_container_close(conn, group);
         eldbus_message_iter_container_close(conf, conn);
