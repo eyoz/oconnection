@@ -929,7 +929,7 @@ _oconnection_nm_setting_wifi_update_property(void *data, const void *msg, Eldbus
 {
    const char *key = msg;
    ODBG_PROP("Update setting property %s\n", key);
-   const char *ssid;
+   const char *ssid = NULL;
 
    if (!strcmp(key, "ssid"))
      {
