@@ -154,7 +154,6 @@ static void _oconnection_popup_del(Instance *inst);
 static Eina_Bool _oconnection_popup_del_idler_cb(void *data);
 static void _oconnection_popup_input_create(Instance *inst, Ecore_X_Window sibling);
 static void _oconnection_popup_input_destroy(Instance *inst);
-static void _oconnection_popup_position(Instance *inst, Evas_Coord ww, Evas_Coord hh);
 static void _oconnection_popup_size_calc(Instance *inst, Evas_Coord *ww, Evas_Coord *hh);
 
 static int _oconnection_scan_compare(const void *data1, const void *data2);
@@ -791,7 +790,7 @@ _oconnection_popup_show(Instance *inst)
    evas_object_show(inst->ui.box);
 
    _oconnection_popup_size_calc(inst, &ww, &hh);
-   e_popup_show(inst->popup->win);
+   e_gadcon_popup_show(inst->popup);
 
    if ((inst->ui.step == OCONNECTION_STEP_SSID)
        || (((inst->ui.step == OCONNECTION_STEP_KEY)
@@ -856,7 +855,6 @@ _oconnection_popup_show(Instance *inst)
      }
    else
      {
-        _oconnection_popup_position(inst, ww, hh);
         sibling = inst->popup->win->evas_win;
      }
    _oconnection_popup_input_create(inst, sibling);
@@ -2074,36 +2072,6 @@ _oconnection_popup_status_end(void *data)
    return ECORE_CALLBACK_CANCEL;
 }
 
-
-static void
-_oconnection_popup_position(Instance *inst, Evas_Coord ww, Evas_Coord hh)
-{
-   Evas_Coord gx, gy, gw, gh, zx, zy, zw, zh, nx, ny;
-   double ratio;
-
-   e_gadcon_client_geometry_get(inst->popup->gcc, &gx, &gy, &gw, &gh);
-   zx = inst->popup->win->zone->x;
-   zy = inst->popup->win->zone->y;
-   zw = inst->popup->win->zone->w;
-   zh = inst->popup->win->zone->h;
-   nx = gx - (gw / 2);
-   ny = gy - hh;
-   if ((nx + ww) >= (zx + zw))
-     nx = (zx + zw) - inst->popup->w;
-   else if (nx < zx)
-     nx = zx;
-   if ((ny + hh) >= (zy + zh))
-     ny = (zy + zh) - inst->popup->h;
-   else if (ny < zy)
-     ny = zy;
-
-   ratio = gx + (gw / 2.0) - nx;
-   ratio = ratio / ww;
-
-   fprintf(stderr, "Move resize %d %d %d %d orient %d\n", nx, ny, ww, hh, inst->popup->gcc->gadcon->orient);
-   e_popup_move_resize(inst->popup->win, nx, ny, ww, hh);
-}
-
 static void
 _oconnection_popup_size_calc(Instance *inst, Evas_Coord *ww, Evas_Coord *hh)
 {
@@ -2273,7 +2241,6 @@ _e_mod_main_popup_iface_update(Instance *inst, Eina_List *ifaces)
    if (size_update)
      {
         _oconnection_popup_size_calc(inst, &ww, &hh);
-        _oconnection_popup_position(inst, ww, hh);
      }
 }
 
