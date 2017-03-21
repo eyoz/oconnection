@@ -402,16 +402,39 @@ oconnection_nm_connect(OWireless_Network *ow, const char *psk)
              eldbus_message_iter_container_close(param, var);
              eldbus_message_iter_container_close(group, param);
 
-             /* 802-11-wireless-security / psk */
-             ODBG("Create new settings 802-11-wireless-security/psk\n");
-             key = "psk";
-             val = psk;
-             eldbus_message_iter_arguments_append(group, "{sv}", &param);
-             eldbus_message_iter_basic_append(param, 's', key);
-             var = eldbus_message_iter_container_new(param, 'v', "s");
-             eldbus_message_iter_basic_append(var, 's', val);
-             eldbus_message_iter_container_close(param, var);
-             eldbus_message_iter_container_close(group, param);
+             if (ow->flags & NW_FLAG_WPA)
+               {
+                  /* 802-11-wireless-security / psk */
+                  ODBG("Create new settings 802-11-wireless-security/psk\n");
+                  key = "psk";
+                  val = psk;
+                  eldbus_message_iter_arguments_append(group, "{sv}", &param);
+                  eldbus_message_iter_basic_append(param, 's', key);
+                  var = eldbus_message_iter_container_new(param, 'v', "s");
+                  eldbus_message_iter_basic_append(var, 's', val);
+                  eldbus_message_iter_container_close(param, var);
+                  eldbus_message_iter_container_close(group, param);
+               }
+             else if (ow->flags & NW_FLAG_WEP)
+               {
+                  char k[32];
+                  int idx;
+
+                  ODBG("Create new settings 802-11-wireless-security/psk\n");
+                  for (idx = 0; idx < 4; ++idx)
+                    {
+                       snprintf(k, sizeof(k), "wep-key%d", idx);
+                       key = k;
+                       val = psk;
+                       eldbus_message_iter_arguments_append(group, "{sv}", &param);
+                       eldbus_message_iter_basic_append(param, 's', key);
+                       var = eldbus_message_iter_container_new(param, 'v', "s");
+                       eldbus_message_iter_basic_append(var, 's', val);
+                       eldbus_message_iter_container_close(param, var);
+                       eldbus_message_iter_container_close(group, param);
+                    }
+               }
+
              eldbus_message_iter_container_close(conn, group);
              eldbus_message_iter_container_close(conf, conn);
           }
