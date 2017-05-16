@@ -2102,6 +2102,8 @@ _oconnection_popup_position(Instance *inst, Evas_Coord ww, Evas_Coord hh)
 
    fprintf(stderr, "Move resize %d %d %d %d orient %d\n", nx, ny, ww, hh, inst->popup->gcc->gadcon->orient);
    e_popup_move_resize(inst->popup->win, nx, ny, ww, hh);
+   edje_object_signal_emit(inst->popup->o_bg, "ordissimo,popup,draggable", "");
+   edje_object_part_drag_value_set(inst->popup->o_bg, "ordissimo.cur.phylactere", ratio, 0);
 }
 
 static void
