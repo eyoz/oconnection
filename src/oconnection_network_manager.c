@@ -1031,10 +1031,13 @@ _oconnection_nm_access_point_update_property(void *data, const void *msg, Eldbus
 {
    OWireless_Network *ow = data;
    const char *key = msg;
+   unsigned int flags;
 
    ODBG_PROP("Update access point property %s\n", key);
    if (!strcmp(key, "Flags"))
      {
+        if (!eldbus_message_iter_arguments_get(it, "u", &flags)) return;
+        if (flags) ow->flags |= NW_FLAG_PRIVACY;
      }
    else if (!strcmp(key, "Frequency"))
      {
@@ -1050,8 +1053,6 @@ _oconnection_nm_access_point_update_property(void *data, const void *msg, Eldbus
      }
    else if (!strcmp(key, "RsnFlags"))
      {
-        unsigned int flags;
-
         if (!eldbus_message_iter_arguments_get(it, "u", &flags)) return;
         if ((flags & NM_802_11_AP_SEC_PAIR_WEP40)
             || (flags & NM_802_11_AP_SEC_PAIR_WEP104)
@@ -1065,6 +1066,7 @@ _oconnection_nm_access_point_update_property(void *data, const void *msg, Eldbus
                  || (flags & NM_802_11_AP_SEC_KEY_MGMT_PSK)
                  || (flags & NM_802_11_AP_SEC_KEY_MGMT_802_1X))
           ow->flags |= NW_FLAG_WPA; // | NW_FLAG_WPA2;
+	else if (ow->flags) ow->flags |= NW_FLAG_WEP;
      }
    else if (!strcmp(key, "Ssid"))
      {

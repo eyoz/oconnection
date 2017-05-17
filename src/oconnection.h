@@ -6,17 +6,7 @@ typedef enum Oconnection_Network_Flags_
    NW_FLAG_NONE  = 0,
    NW_FLAG_WEP   = 1 << 1,
    NW_FLAG_WPA   = 1 << 2,
-#if 0
-   NW_FLAG_WPA2  = 1 << 3,
-
-   /* UNUSED flags ... */
-   NW_FLAG_PSK   = 1 << 4,
-   NW_FLAG_CCMP  = 1 << 5,
-   NW_FLAG_TKIP  = 1 << 6,
-   NW_FLAG_ESS   = 1 << 7,
-   NW_FLAG_EAP   = 1 << 8,
-   NW_FLAG_IBSS  = 1 << 9
-#endif
+   NW_FLAG_PRIVACY = 1 << 3,
 } Oconnection_Network_Flags;
 
 EINTERN int OCONNECTION_EVENT_SCAN_RESULTS;
